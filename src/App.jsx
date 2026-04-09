@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 
-// Importing our components
-// Make sure these files exist in your src/components folder!
 import Books from './components/Books'
 import SingleBook from './components/SingleBook'
 import Login from './components/Login'
@@ -30,18 +28,15 @@ function App() {
         <h1>Book Buddy 📚</h1>
         
         <Routes>
-          {/* Home page - shows all books */}
+        
           <Route path='/' element={<Books />} />
           <Route path='/books' element={<Books />} />
 
-          {/* Details page for a single book */}
           <Route path='/books/:id' element={<SingleBook token={token} />} />
 
-          {/* Authentication Pages */}
           <Route path='/login' element={<Login setToken={setToken} />} />
           <Route path='/register' element={<Register setToken={setToken} />} />
 
-          {/* Profile Page */}
           <Route path='/account' element={<Account token={token} />} />
         </Routes>
       </main>
