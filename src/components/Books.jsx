@@ -13,7 +13,6 @@ export default function Books() {
         const response = await fetch("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books");
         const result = await response.json();
         
-        // Safety check: ensure result.books exists before setting state
         setBooks(result.books || []);
         setLoading(false);
       } catch (error) {
@@ -24,7 +23,6 @@ export default function Books() {
     fetchBooks();
   }, []);
 
-  // Logic to filter books based on what the user types in the search bar
   const filteredBooks = books.filter((book) =>
     book.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -35,7 +33,6 @@ export default function Books() {
     <div>
       <h2>Library Catalog</h2>
       
-      {/* Search Bar - This makes the app feel very functional! */}
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
         <input 
           type="text" 

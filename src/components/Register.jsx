@@ -15,7 +15,6 @@ export default function Register({ setToken }) {
       });
       const result = await response.json();
       
-      // If the API sends back a token, save it!
       if (result.token) {
         setToken(result.token);
         alert("Account created successfully!");

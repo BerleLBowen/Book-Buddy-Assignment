@@ -25,13 +25,10 @@ export default function Login({ setToken }) {
       const result = await response.json();
 
       if (result.token) {
-        // 1. Save the token in our App state
         setToken(result.token);
         
-        // 2. Optional: Save to localStorage so it stays if you refresh
         localStorage.setItem("token", result.token);
         
-        // 3. Send the user to their account page
         navigate("/account");
       } else {
         setMessage(result.message || "Login failed. Check your credentials.");

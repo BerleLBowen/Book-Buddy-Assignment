@@ -10,7 +10,6 @@ export default function Account({ token }) {
 
     async function fetchUserData() {
       try {
-        // Fetch Profile
         const userResponse = await fetch('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me', {
           headers: {
             'Content-Type': 'application/json',
@@ -20,7 +19,6 @@ export default function Account({ token }) {
         const userData = await userResponse.json();
         setUser(userData);
 
-        // Fetch Reservations
         const reserveResponse = await fetch('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations', {
           headers: {
             'Content-Type': 'application/json',

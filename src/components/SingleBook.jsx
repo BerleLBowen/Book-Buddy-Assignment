@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 export default function SingleBook({ token }) {
   const [book, setBook] = useState(null);
   const [error, setError] = useState(null);
-  const { id } = useParams(); // This gets the ID from the URL (/books/:id)
+  const { id } = useParams(); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,14 +20,13 @@ export default function SingleBook({ token }) {
     fetchSingleBook();
   }, [id]);
 
-  // Function to reserve the book
   async function handleReserve() {
     try {
       const response = await fetch(`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}` // This tells the API who is logged in
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
           available: false,
@@ -36,7 +35,6 @@ export default function SingleBook({ token }) {
       const result = await response.json();
       
       if (result.book) {
-        // Refresh the book data to show it's now reserved
         setBook(result.book);
         alert("Book reserved successfully!");
       }
@@ -59,7 +57,6 @@ export default function SingleBook({ token }) {
       
       <p><strong>Status:</strong> {book.available ? "Available ✅" : "Checked Out ❌"}</p>
 
-      {/* Logic for the Reserve Button */}
       {token && (
         <button 
           disabled={!book.available} 
